@@ -8,10 +8,21 @@ function setup() {
     background(200);
     noLoop();
     frameRate(10);
+    
+    slider = createSlider(0, 3000);
+    slider.position(10, 700);
+    slider.size(500);
+    slider.input(updateSeed);
+    noiseSeed(100);
 }
 
 
 function draw() {
+    // text('hi', 550, 550);
+    
+    // let seedVal = slider.value();
+    // noiseSeed(seedVal);
+    
     for (let x = 0; x < width; x++) {
         for (let y = 0; y < height; y++) {
             const noiseVal = noise(x / zoomFactor, y / zoomFactor); // generates a value between 0 - 1 with a zoomfactor that "narrows" where we are looking (closer pixels i guess is another way of describing)
@@ -26,5 +37,12 @@ function draw() {
 
     updatePixels();
 
+}
+
+function updateSeed() {
+    let seedVal = slider.value();
+    noiseSeed(seedVal);
+    updatePixels();
+    // console.log(seedVal);
 }
 
