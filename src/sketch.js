@@ -2,6 +2,7 @@
 let width = 600;
 let height = 600;
 let zoomFactor = 100;
+
 let WaterTerrain;
 let SandTerrain;
 let GrassTerrain;
@@ -11,15 +12,10 @@ let MountainTerrain;
 function setup() {
     createCanvas(width, height);
     background(200);
-    noLoop();
-    frameRate(10);
-    
-    slider = createSlider(0, 3000);
-    slider.position(10, 700);
-    slider.size(500);
-    slider.input(updateSeed);
-    noiseSeed(100);
-    noiseDetail(10, 0.5);
+    frameRate(60);
+    noiseDetail(9, 0.5);
+
+    createSeedSlider();
 
     WaterTerrain = new TerrainType(0, 0.4, color(30, 176, 251), color(40, 255, 255), 0);
     SandTerrain = new TerrainType(0.4, 0.5, color(215, 192, 158), color(255, 246, 193), 0.3);
@@ -104,6 +100,23 @@ function normalize(value, max, min) {
     }
 
     return (value - min) / (max - min);
+}
+
+function mouseWheel(event) {
+    if (event.delta > 0) {
+        zoomFactor -= 10;
+
+    } else {
+        zoomFactor += 10;
+
+    }
+}
+
+function createSeedSlider() {
+    slider = createSlider(0, 5, 1);
+    slider.position(10, 700);
+    slider.size(500);
+    slider.input(updateSeed);
 }
 
 function updateSeed() {
