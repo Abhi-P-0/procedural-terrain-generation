@@ -13,13 +13,13 @@ function setup() {
     slider.position(10, 700);
     slider.size(500);
     slider.input(updateSeed);
-    noiseSeed(100);
+    // noiseSeed(100);
 }
 
 
 function draw() {
-    // text('hi', 550, 550);
-    
+    // text('seed:', 550, 550);
+    let waterColour = color(0, 0, 255), sandColour = color(255, 255, 0), grassColour = color(0, 255, 0), treeColour = color(0, 100, 100);
     // let seedVal = slider.value();
     // noiseSeed(seedVal);
     
@@ -29,7 +29,22 @@ function draw() {
 
             // console.log(noiseVal);
             
-            set(x, y, color(255 * noiseVal)); // multiplies the noise value by 255 to get grayscale colour and sets it at (x, y) pixel
+            // set(x, y, color(255 * noiseVal)); // multiplies the noise value by 255 to get grayscale colour and sets it at (x, y) pixel
+
+            // now uses colour instead of grayscale
+            if (noiseVal < 0.4) {
+                set(x, y, waterColour);
+
+            } else if(noiseVal < 0.5) { 
+                set(x, y, sandColour);
+
+            } else if (noiseVal < 0.7) {
+                set(x, y, grassColour);
+
+            } else {
+                set(x, y, treeColour);
+                
+            }
 
         }
 
