@@ -19,7 +19,7 @@ function setup() {
 
 function draw() {
     // text('seed:', 550, 550);
-    let waterColour = color(0, 0, 255), sandColour = color(255, 255, 0), grassColour = color(0, 255, 0), treeColour = color(0, 100, 100);
+    let waterColour = color(30, 176, 251), sandColour = color(255, 246, 193), grassColour = color(118, 239, 124), treeColour = color(22, 181, 141);
     // let seedVal = slider.value();
     // noiseSeed(seedVal);
     
@@ -31,7 +31,7 @@ function draw() {
             
             // set(x, y, color(255 * noiseVal)); // multiplies the noise value by 255 to get grayscale colour and sets it at (x, y) pixel
 
-            // now uses colour instead of grayscale
+            // now uses colour instead of grayscale, (better colour values from htmlcolorcodes.com)
             if (noiseVal < 0.4) {
                 set(x, y, waterColour);
 
